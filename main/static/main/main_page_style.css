@@ -1,0 +1,11 @@
+#header {
+    color: blue;
+}
+
+#menu ul li {
+    float: left;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px;
+}

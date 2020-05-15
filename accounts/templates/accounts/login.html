@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+  <div class="container">
+    <h2 class="login-header">Log in </h2>
+    <form method="post">
+      {% csrf_token %}
+      {% bootstrap_form form show_label=False %}
+      <input type="submit" value="Log in" class="btn btn-primary">
+    </form>
+  </div>
+{% endblock %}

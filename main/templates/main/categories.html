@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if messages %}
+  {% for message in messages %}
+    <p class="{{ message.tags }}">{{ message }}</p>
+  {% endfor %}
+{% else %}
+<div class="container">
+  <h2 class="category-header">List of categories</h2>
+  <ol class="list-group list-group-flush">
+      {% for category in categories %}
+          <li class="list-group-item"><a href="{% url 'main:single_category' category_name=category.category_name %}">{{category.category_name}}</a></li>
+      {% endfor %}
+  </ol>
+</div>
+{% endif %}
+{% endblock %}

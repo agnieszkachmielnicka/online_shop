@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% if messages %}
+    {% for message in messages %}
+      <p class="{{ message.tags }}">{{ message }}</p>
+    {% endfor %}
+  {% else %}
+    <ul class="product-list">
+      {% for product, quantity in products.items %}
+        {% if quantity > 0 %}
+          <li class="product-item">
+            <div class="product-details">
+              <h2>{{product.product_name}}</h2>
+              <p>{{product.product_description}}</p>
+              <h3>{{product.product_price}}</h3>
+            </div>
+            <a href="{% url 'main:add_product_to_basket' product_id=product.id %}" class="add-product btn btn-primary">Add to basket</a>
+          </li>
+          {% endif %}
+      {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock %}

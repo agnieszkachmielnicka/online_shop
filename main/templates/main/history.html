@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>This is history page</h1>
+  {% if orders %}
+  <ol>
+    {% for order in orders %}
+      <li>
+        <p>Order date: {{order.date_of_order|date:"D d M Y"}}</p>
+        <p>List of products:</p>
+        <ul>
+          {% for product in order.products.all %}
+            <li>{{ product.product_name }}</li>
+          {% endfor %}
+        </ul>
+        <p>Total price: {{order.total_price}}</p>
+        <p>Payment method: {{order.payment_method}}</p>
+      </li>
+    {% endfor %}
+  </ol>
+  {% else %}
+    <h2>You have no orders yet</h2>
+  {% endif %}
+{% endblock %}

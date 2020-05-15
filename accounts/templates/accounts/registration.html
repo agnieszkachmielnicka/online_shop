@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+  <div class="container">
+    <h2 class="login-header">Create your account</h2>
+    <form method="post">
+      {% csrf_token %}
+      {% bootstrap_form form set_placeholder=False %}
+      <input type="submit" value="Register" class='btn btn-primary'>
+    </form>
+  </div>
+{% endblock %}

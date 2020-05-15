@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <h2 class="login-header">Products in your basket</h2>
+    {% if products_list %}
+      <ol class="list-group list-group-flush">
+          {% for p, q in products_list %}
+              <li class="list-group-item">
+                <div>
+                  <p>{{p.product_name}}</p>
+                  <p>Product quantity: {{q}}</p>
+                </div>
+                <div class="remove-button">
+                  <a class="btn btn-primary" href="{% url 'main:remove_product_from_basket' product_id=p.id %}">Remove</a>
+                </div>
+              </li>
+          {% endfor %}
+      </ol>
+      <a class="btn btn-primary make-order-button" href="{% url 'main:order' %}">Make order</a>
+    {% else %}
+      <p>You have no products in your basket</p>
+    {% endif %}
+  </div>
+{% endblock %}

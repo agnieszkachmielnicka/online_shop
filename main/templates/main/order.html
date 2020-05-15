@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+  <h2>You are buying this products:</h2>
+  <ul>
+    {% for p, q, price in products %}
+      <li>
+        <p>Product: {{p.product_name}}</p>
+        <p>Product quantity: {{q}}</p>
+        <p>Total price: {{price}}</p>
+      </li>
+    {% endfor %}
+  </ul>
+  <p>TOTAL: {{total}}</p>
+  <div class="container">
+    <form class="" method="post">
+      {% csrf_token %}
+      <h2>Please fill below informations: </h2>
+      {% bootstrap_form form %}
+      <input class="btn btn-primary" type="submit" value="Pay">
+    </form>
+  </div>
+
+{% endblock %}
